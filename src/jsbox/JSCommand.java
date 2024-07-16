@@ -54,7 +54,7 @@ public class JSCommand {
                     if(cleanup.isInterrupted()) return;
                 }
                 threads.each((p, t) -> {
-                    if(t.player != p){
+                    if(t.player != p || p.con == null || p.con.hasDisconnected ){
                         toDelete.add(p);
                     }
                 });
