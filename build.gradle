@@ -63,13 +63,13 @@ task jarAndroid{
         def d8 = isWindows ? "d8.bat" : "d8"
 
         //dex and desugar files - this requires d8 in your PATH
-        "$d8 $dependencies --min-api 14 --output ${project.archivesBaseName}Android.jar ${project.archivesBaseName}Desktop.jar"
+        "$d8 $dependencies --min-api 14 --output ${project.archivesBaseName}Android.jar ${project.archivesBaseName}Server.jar"
             .execute(null, new File("$buildDir/libs")).waitForProcessOutput(System.out, System.err)
     }
 }
 
 jar{
-    archiveFileName = "${base.archivesBaseName}Desktop.jar"
+    archiveFileName = "${base.archivesBaseName}Server.jar"
 
     from{
         configurations.runtimeClasspath.collect{ it.isDirectory() ? it : zipTree(it) }
@@ -89,11 +89,11 @@ task deploy(type: Jar){
     dependsOn jar
     archiveFileName = "${base.archivesBaseName}.jar"
 
-    from{ [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar"), zipTree("$buildDir/libs/${project.archivesBaseName}Android.jar")] }
+    from{ [zipTree("$buildDir/libs/${project.archivesBaseName}Server.jar"), zipTree("$buildDir/libs/${project.archivesBaseName}Android.jar")] }
 
     doLast{
         delete{
-            delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar"
+            delete "$buildDir/libs/${project.archivesBaseName}Server.jar"
             delete "$buildDir/libs/${project.archivesBaseName}Android.jar"
         }
     }

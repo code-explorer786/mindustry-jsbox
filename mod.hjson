@@ -1,23 +1,25 @@
 #the mod name as displayed in-game
-displayName: "Java Mod Template"
+displayName: "JSBox plugin"
 
 #the internal name of your mod
-name: "example-java-mod"
+name: "jsbox"
 
 #your name
-author: "You"
+author: "code-explorer786, Radio-Silence-1"
 
 #the fully qualified main class of the mod
-main: "example.ExampleJavaMod"
+main: "jsbox.JSBox"
 
 #the mod description as seen in the mod dialog
-description: "A Mindustry Java mod template."
+description: "Inspired by 2r2t. [blue]https://github.com/code-explorer786/mindustry-jsbox"
 
 #the mod version
-version: 1.0
+version: 0.0
 
 #the minimum game build required to run this mod
-minGameVersion: 145
+minGameVersion: 146
 
 #this is a java mod
 java: true
+
+hidden: true
